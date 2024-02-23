@@ -58,25 +58,31 @@ function validateCopChoices(copChoices: CopChoice[]): boolean {
 
 
     const selectedVehiclesCountRecord:Record<string,number> = {};
-    let selectedVehicleCountValid = true;
+    let selectedVehicleValid = true;
 
     for(const choice of copChoices){
         selectedVehiclesCountRecord[choice.vehicleId] = (selectedVehiclesCountRecord[choice.vehicleId] || 0)+1
 
         const selectedVehicle = vehicles.find((vehicle)=>vehicle.id == choice.vehicleId);
+        const selectedCity = cities.find((city)=>city.id === choice.cityId);
 
-        if(!selectedVehicle){
-            selectedVehicleCountValid = false;
+        if(!selectedVehicle || !selectedCity){
+            selectedVehicleValid = false;
+            break;
+        }
+
+        if(selectedVehicle.range < selectedCity.distance*2){
+            selectedVehicleValid = false;
             break;
         }
 
         if(selectedVehiclesCountRecord[choice.vehicleId]> selectedVehicle.count){
-            selectedVehicleCountValid = false;
+            selectedVehicleValid = false;
             break;
         }
     }
 
-    return eachSelectedCityUnique && selectedVehicleCountValid;
+    return eachSelectedCityUnique && selectedVehicleValid;
 
 }
 
