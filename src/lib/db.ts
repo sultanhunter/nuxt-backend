@@ -1,23 +1,30 @@
-import {PrismaClient} from "@prisma/client";
 
-declare global {
-    var prisma: PrismaClient | undefined;
+export interface Vehicle{
+    id:string;
+    kind:string;
+    range:number;
+    count:number;
 }
 
-export const db = globalThis.prisma || new PrismaClient();
-
-if (process.env.NODE_ENV !== "production") globalThis.prisma = db;
-
-
-export function removeKeys<T, Key extends keyof T>(
-    object: T,
-    keysToRemove: Key[]
-): Omit<T, Key> {
-    return Object.entries(object as {}).reduce((acc, [key, value]) => {
-        if (!keysToRemove.includes(key as Key)) {
-            (acc as any)[key as keyof typeof acc] = value;
-        }
-        return acc;
-    }, {} as Omit<T, Key>);
+export interface City {
+    id:string;
+    name:string;
+    distance:number
 }
+
+// Sample data for cities and vehicles
+export const cities:City[] = [
+    {id:'60_Yapkashnagar', name:'Yapkashnagar', distance: 60 },
+    {id:'50_Lihaspur', name: 'Lihaspur', distance: 50 },
+    {id: '40_Narmis_City',name: 'Narmis City', distance: 40 },
+    {id:'30_Shekharvati', name: 'Shekharvati', distance: 30 },
+    {id:'20_Nuravgram', name: 'Nuravgram', distance: 20 },
+];
+
+
+export const vehicles:Vehicle[] = [
+    {id:'60_EV_Bike', kind: 'EV Bike', range: 60 ,count:2},
+    {id:'100_EV_Car', kind: 'EV Car', range: 100,count:1},
+    {id:'120_EV_SUV', kind: 'EV SUV', range: 120,count:1},
+];
 
