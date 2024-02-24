@@ -100,7 +100,7 @@ function validateCopChoices(copChoices: CopChoice[]): boolean {
 }
 
 // Function to check if any cop successfully captures the fugitive
-function simulateCapture(copChoices: CopChoice[], fugitiveLocation: City): { success: boolean; capturingCop?: string } {
+function simulateCapture(copChoices: CopChoice[], fugitiveLocation: City): { success: boolean; copIndex?: string } {
 
     // Looping through each cop choice
     for (const choice of copChoices) {
@@ -110,7 +110,7 @@ function simulateCapture(copChoices: CopChoice[], fugitiveLocation: City): { suc
         const city = cities.find((city) => city.id === choice.cityId)
 
         if (vehicle && vehicle.range >= 2 * fugitiveLocation.distance && city?.id === fugitiveLocation.id) {
-            return {success: true, capturingCop: choice.cop};
+            return {success: true, copIndex: choice.cop};
         }
     }
 
