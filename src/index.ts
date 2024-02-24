@@ -14,7 +14,6 @@ const port = process.env.PORT || 8000;
 const corsOptions = {
     origin: "https://yocket-nuxt.netlify.app",
     optionsSuccessStatus: 200,
-    credentials: true,
 };
 
 app.use(express.json());
