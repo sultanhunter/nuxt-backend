@@ -18,6 +18,7 @@ captureFugitiveRouter.get('/capture', (req, res, next) => {
             'cities': cities,
             'vehicles': vehicles,
         }
+        console.log('DATA', data)
         return res.status(200).json(data)
     } catch (e) {
         return next(Error("Error"))
