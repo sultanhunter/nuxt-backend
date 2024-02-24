@@ -22,3 +22,7 @@ logs
 .env
 .env.*
 !.env.example
+
+bun.lockb
+bun 2.lockb
+package-lock.json
