@@ -90,7 +90,7 @@ Response Structure:
 ```
 {
     "success": true,
-    "copIndex": "third"
+    "copIndex": "1"
 }
 ```
 ```
