@@ -69,17 +69,17 @@ Body Structure:
 {
     "copChoices":[
         {
-            "cop":"first",
+            "cop":"0",
             "cityId":"60_Yapkashnagar",
             "vehicleId":"120_EV_SUV"
         },
         {
-            "cop":"second",
+            "cop":"1",
             "cityId":"50_Lihaspur",
             "vehicleId":"100_EV_Car"
         },
         {
-            "cop":"third",
+            "cop":"2",
             "cityId":"30_Shekharvati",
             "vehicleId":"60_EV_Bike"
         }
